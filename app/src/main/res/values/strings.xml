@@ -18,6 +18,7 @@
     <string name="dialog_act">动作：</string>
     <string name="dialog_value">数值：</string>
     <string name="dialog_mode">模式：</string>
+    <string name="dialog_location">位置：</string>
 
     <string name="sure">确认</string>
 </resources>

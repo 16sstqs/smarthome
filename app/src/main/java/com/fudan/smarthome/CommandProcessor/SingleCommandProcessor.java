@@ -46,6 +46,8 @@ public class SingleCommandProcessor {
             } else {
                 return participleResult.getLocation().equals("卧室") ? 3 : 4;
             }
+        } else if (device.contains("音乐")||device.contains("电视")) {
+            return 8;
         } else {
             return -1;
         }

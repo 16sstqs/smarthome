@@ -24,8 +24,8 @@ public class HomeFragment extends Fragment {
 
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView tempView = root.findViewById(R.id.text_temp);
-        final TextView humView = root.findViewById(R.id.text_hum);
+        final TextView tempView = root.findViewById(R.id.temperature);
+        final TextView humView = root.findViewById(R.id.humidity);
         final TextView longView = root.findViewById(R.id.text_long);
         final TextView latView = root.findViewById(R.id.text_lat);
 
@@ -33,7 +33,8 @@ public class HomeFragment extends Fragment {
         homeEnvModel.getHomeEnv().observe(this, new Observer<HomeEnvironmentEntity>() {
             @Override
             public void onChanged(HomeEnvironmentEntity homeEnvironmentEntity) {
-                tempView.setText("temperature:"+homeEnvironmentEntity.getTemp()+"humidity:"+homeEnvironmentEntity.getHum());
+                tempView.setText("室内温度:"+homeEnvironmentEntity.getTemp()+"℃");
+                humView.setText("室内湿度:"+homeEnvironmentEntity.getHum()+"%");
 //                humView.setText(homeEnvironmentEntity.getHum());
 //                longView.setText(homeEnvironmentEntity.getLongitude());
 //                latView.setText(homeEnvironmentEntity.getLatitude());

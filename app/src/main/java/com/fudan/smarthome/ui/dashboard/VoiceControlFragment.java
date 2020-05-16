@@ -163,18 +163,18 @@ public class VoiceControlFragment extends Fragment {
             builder.setView(view);
             final EditText edit_equi = (EditText) view.findViewById(R.id.edit_equi);
             final EditText edit_act = (EditText) view.findViewById(R.id.edit_act);
-            final EditText edit_value = (EditText) view.findViewById(R.id.edit_value);
+            final EditText edit_location = (EditText) view.findViewById(R.id.edit_location);
             final EditText edit_mode = (EditText) view.findViewById(R.id.edit_mode);
 
             final ParticipleResult participleResult = (ParticipleResult) msg.obj;
             edit_equi.setText(participleResult.getDevice());
             edit_act.setText(participleResult.getAction());
-            edit_value.setText(participleResult.getValue());
+            edit_location.setText(participleResult.getLocation());
             edit_mode.setText(participleResult.getMode());
             builder.setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    if (participleResult.getDevice() != null) {
+                    if (participleResult.getDevice() != null||participleResult.getMode()!=null) {
                         CommandProcessor.commandProcessor(participleResult);
                     }
                 }

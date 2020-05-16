@@ -1,14 +1,20 @@
 package com.fudan.smarthome.Utils;
 
+import android.nfc.Tag;
+import android.util.Log;
+
 public class TimeStringToMillisecondUtil {
+    private static final String TAG = "MillisecondUtil";
+
     public static int getMillisecond(String timeString) {
         int base = 1000;
         if (timeString.contains("分")) {
             base *= 60;
-            base*=solve(timeString);
+            base *= solve(timeString);
         } else if (timeString.contains("秒")) {
-            base*=solve(timeString);
+            base *= solve(timeString);
         }
+        Log.i(TAG, "指令延迟执行时间：" + base);
         return base;
     }
 
