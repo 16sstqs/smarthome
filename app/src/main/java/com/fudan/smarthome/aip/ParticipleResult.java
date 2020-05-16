@@ -13,6 +13,7 @@ public class ParticipleResult {
     private String value;
     private String mode;
     private String[] items;
+    private String location;
 
     public static ParticipleResult parseJson(JSONObject jsonObject) {
         ParticipleResult participleResult = new ParticipleResult();
@@ -45,6 +46,10 @@ public class ParticipleResult {
                         case "TIME":
                             // result.mode = object.optString("item");
                             participleResult.setTime(resultItem[i]);
+                            break;
+                        case "LOCATE":
+                            // result.mode = object.optString("item");
+                            participleResult.setLocation(resultItem[i]);
                             break;
 
                     }
@@ -109,5 +114,13 @@ public class ParticipleResult {
 
     public String getMode() {
         return mode;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.fudan.smarthome.CommandProcessor.CommandProcessor;
 import com.fudan.smarthome.aip.ParticipleResult;
 import com.fudan.smarthome.mqttService.HomeMQTTService;
 import com.fudan.smarthome.voiceRecognition.*;
@@ -165,7 +166,7 @@ public class VoiceControlFragment extends Fragment {
             final EditText edit_value = (EditText) view.findViewById(R.id.edit_value);
             final EditText edit_mode = (EditText) view.findViewById(R.id.edit_mode);
 
-            ParticipleResult participleResult = (ParticipleResult) msg.obj;
+            final ParticipleResult participleResult = (ParticipleResult) msg.obj;
             edit_equi.setText(participleResult.getDevice());
             edit_act.setText(participleResult.getAction());
             edit_value.setText(participleResult.getValue());
@@ -173,16 +174,15 @@ public class VoiceControlFragment extends Fragment {
             builder.setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    commandViewModel.setCommand("1");
-                    //edit之后确认的指令实体！！！！！！
-//                    OrderEntity orderEntity=new OrderEntity(edit_equi.getText().toString(),edit_act.getText().toString(),edit_value.getText().toString(),edit_mode.getText().toString());
+                    if (participleResult.getDevice() != null) {
+                        CommandProcessor.commandProcessor(participleResult);
+                    }
                 }
             });
             builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
-                    //cancel 在设置了cancelListener时有区别，在这里没必要设置
                 }
             });
 

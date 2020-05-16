@@ -29,8 +29,8 @@ public class HomeEnvironmentEntity {
 
             setTemp(jsonObject.getString("temp"));
             setHum(jsonObject.getString("hum"));
-            setLongitude(jsonObject.getString("long"));
-            setLatitude(jsonObject.getString("lat"));
+//            setLongitude(jsonObject.getString("long"));
+//            setLatitude(jsonObject.getString("lat"));
             Log.i(TAG, "temp" + getTemp());
 
         } catch (JSONException e) {
